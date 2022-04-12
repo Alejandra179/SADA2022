@@ -14,7 +14,7 @@ if ($con) {
     if(isset($_POST['humedad'])) { 
         $humedad = $_POST['humedad'];
         echo " humedad : ".$humedad;
-        date_default_timezone_set('america/bogota');
+        date_default_timezone_set('america/argentina/buenos_aires');
         $fecha_actual = date("Y-m-d H:i:s");
         
         $consulta = "INSERT INTO Tb_DHT22(Temperatura, Humedad, fecha_actual) VALUES ('$temperatura','$humedad', '$fecha_actual')";

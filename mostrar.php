@@ -21,7 +21,7 @@ if($con){
 </head>
 <body>
     <div class="container">
-        <form action="mostar.php" method="POST">
+        <form action="mostrar.php" method="POST">
             <input type="date">
             <label>Fecha Desde</label>
             <input type="date">
