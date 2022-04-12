@@ -22,9 +22,9 @@ if($con){
 <body>
     <div class="container">
         <form action="mostrar.php" method="POST">
-            <input type="date">
+            <input type="date" name="fecha_desde">
             <label>Fecha Desde</label>
-            <input type="date">
+            <input type="date" name="fecha_hasta">
             <label>Fecha Hasta</label>
         </form>
         <div class="container">
