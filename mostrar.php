@@ -40,6 +40,9 @@ if($con){
                                     <th scope="col">#</th>
                                     <th scope="col">Temperatura</th>
                                     <th scope="col">Humedad</th>
+                                    <th scope="col">Velocidad Viento</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Precipitación</th>
                                     <th scope="col">Fecha</th>
                                 </tr>
                         </thead>
@@ -48,21 +51,27 @@ if($con){
                             $label= array();
                             $temperaturas=array();
                             $humedades = array();
+                            $velocidad_viento = array();
                             while($row = mysqli_fetch_assoc($resultado)){
                                 array_push($label,date("d/m/Y H:m:s", strtotime($row['fecha_actual'])));
                                 array_push($temperaturas,$row['Temperatura']);
                                 array_push($humedades,$row['Humedad']);
+                                array_push($velocidad_viento,$row['velocidad_viento']);
                                 ?>
                             <tr>
                             <td scope="row"><input type="checkbox"></td>
                             <td><?php echo $row['Temperatura'] ?></td>
                             <td><?php echo $row['Humedad'] ?></td>
+                            <td><?php echo $row['velocidad_viento'] ?></td>
+                            <td><?php echo $row['direccion']?></td>
+                            <td><?php echo $row['precipitacion']?></td>
                             <td><?php echo date("d/m/Y H:m:s", strtotime($row['fecha_actual']));?></td>
                             </tr>
                             <?php }?>
                         </tbody>
 
                     </table>
+
                 </div>
                 <div class="col-6">
                     <div>
