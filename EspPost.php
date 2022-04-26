@@ -4,31 +4,28 @@ include'conexion.php';
 
 if ($con) {
     echo "Conexion con base de datos exitosa! ";
-    
-    if(isset($_POST['temperatura'])) {
-        $temperatura = $_POST['temperatura'];
-        echo "Estación meteorológica";
-        echo " Temperaura : ".$temperatura;
-    }
- 
-    if(isset($_POST['humedad'])) { 
-        $humedad = $_POST['humedad'];
-        echo " humedad : ".$humedad;
+    $direccion = $_POST['direccion'];
+    $velocidad = $_POST['velocidad'];
+       // $temperatura = $_POST['temperatura'];
+        //echo "Estación meteorológica";
+    //    echo " Temperaura : ".$temperatura;
+      //  $humedad = $_POST['humedad'];
+        //echo " humedad : ".$humedad;
         date_default_timezone_set('america/argentina/buenos_aires');
         $fecha_actual = date("Y-m-d H:i:s");
         
-        $consulta = "INSERT INTO Tb_DHT22(Temperatura, Humedad, fecha_actual) VALUES ('$temperatura','$humedad', '$fecha_actual')";
-       // $consulta = "UPDATE DHT11 SET Temperatura='$temperatura',Humedad='$humedad' WHERE Id = 1";
+        $consulta = "INSERT INTO Tb_DHT22(direccion,velocidad_viento, fecha_actual) VALUES ('$direccion','$velocidad','$fecha_actual')";
+       
         $resultado = mysqli_query($con, $consulta);
         if ($resultado){
             echo " Registo en base de datos OK! ";
         } else {
             echo " Falla! Registro BD";
         }
+        
     }
     
-    
-} else {
+    else {
     echo "Falla! conexion con Base de datos ";   
 }
 

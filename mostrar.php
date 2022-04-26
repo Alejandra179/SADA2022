@@ -47,21 +47,22 @@ if($con){
                             <?php $resultado = mysqli_query($con,$datos);
                             $label= array();
                             $temperaturas=array();
+                            $humedades = array();
                             while($row = mysqli_fetch_assoc($resultado)){
-                                array_push($label,$row['fecha_actual']);
+                                array_push($label,date("d/m/Y H:m:s", strtotime($row['fecha_actual'])));
                                 array_push($temperaturas,$row['Temperatura']);
+                                array_push($humedades,$row['Humedad']);
                                 ?>
                             <tr>
                             <td scope="row"><input type="checkbox"></td>
                             <td><?php echo $row['Temperatura'] ?></td>
                             <td><?php echo $row['Humedad'] ?></td>
-                            <td><?php echo $row['fecha_actual']?></td>
+                            <td><?php echo date("d/m/Y H:m:s", strtotime($row['fecha_actual']));?></td>
                             </tr>
                             <?php }?>
                         </tbody>
 
                     </table>
-<?php echo json_encode($label);?>
                 </div>
                 <div class="col-6">
                     <div>
@@ -89,9 +90,15 @@ if($con){
     labels: labels,
     datasets: [{
       label: 'Temperatura',
-      backgroundColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(0, 0, 0)',
       borderColor: 'rgb(255, 99, 132)',
       data: <?php echo json_encode($temperaturas)?>,
+    },
+    {
+      label: 'Humedad',
+      backgroundColor: 'rgb(255, 255, 255)',
+      borderColor: 'rgb(0, 0, 255)',
+      data: <?php echo json_encode($humedades)?>,
     }]
   };
 
